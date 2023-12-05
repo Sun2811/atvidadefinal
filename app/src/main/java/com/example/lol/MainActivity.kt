@@ -198,3 +198,111 @@ fun PerfilScreen(navController: NavHostController) {
         }
     }
 }
+@Composable
+fun ExperienciaScreen() {
+    BackgroundImage {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Conheça os Campeões",
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                color = Color.White,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+                    .background(Color.Black.copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+                    .padding(16.dp)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            // Campeão 1
+            Campeao(
+                nome = "A Exilada - Riven",
+                descricao = "Riven é uma ex-guerreira de Noxus que se tornou expatriada após perder a fé em seu império durante a guerra em Ionia, agora buscando redenção e um novo propósito.",
+                imagemId = R.drawable.a1
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            // Campeão 2
+            Campeao(
+                nome = "o Yolorde Pré-Historico Gnar",
+                descricao = "Gnar é um yordle antigo, descongelado após milênios, alternando entre travesso e feroz, e usa objetos ao redor, como bumerangues e prédios, para atacar.",
+                imagemId = R.drawable.a2
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            // Campeão 3
+            Campeao(
+                nome = "A Iluminada Karma",
+                descricao = "\n" +
+                        "A Iluminada Karma é uma campeã de suporte em League of Legends com habilidades de cura e controle de multidões.",
+                imagemId = R.drawable.a3
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            // Campeão 4
+            Campeao(
+                nome = "Caitlyn, a Xerife de Piltover",
+                descricao = "Caitlyn é uma atiradora de alta precisão.",
+                imagemId = R.drawable.a4
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            // Campeão 5
+            Campeao(
+                nome = " A Iluminada Karma",
+                descricao = "Descrição do Campeão 5...",
+                imagemId = R.drawable.a5
+            )
+        }
+    }
+}
+
+@Composable
+fun Campeao(nome: String, descricao: String, imagemId: Int) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .background(Color.Black.copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(16.dp)
+    ) {
+        Row {
+            Image(
+                painter = painterResource(id = imagemId),
+                contentDescription = "Imagem do $nome",
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.CenterVertically)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Column {
+                Text(
+                    text = nome,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    color = Color.White
+                )
+                Text(
+                    text = descricao,
+                    fontSize = 14.sp,
+                    color = Color.White
+                )
+            }
+        }
+    }
+}
+
+
+
+@Composable
+fun BackgroundImage(content: @Composable () -> Unit) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.u2),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
+        content()
+    }
+}
